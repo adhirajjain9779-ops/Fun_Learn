@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Fun Learn</title>
+
+<style>
+
+body{
+font-family:Arial;
+margin:0;
+background:linear-gradient(135deg,#6dd5ed,#c471ed);
+text-align:center;
+}
+
+header{
+background:#222;
+color:white;
+padding:20px;
+font-size:30px;
+}
+
+nav{
+position:absolute;
+top:20px;
+right:30px;
+}
+
+nav a{
+background:white;
+color:black;
+padding:8px 14px;
+border-radius:8px;
+text-decoration:none;
+font-weight:bold;
+}
+
+.section{
+background:white;
+margin:25px;
+padding:25px;
+border-radius:15px;
+box-shadow:0 8px 15px rgba(0,0,0,0.2);
+}
+
+button{
+padding:10px 18px;
+border:none;
+border-radius:10px;
+background:#222;
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+background:#555;
+}
+
+#aboutPage{
+display:none;
+padding:40px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+<a href="#" onclick="showAbout()">About Me</a>
+</nav>
+
+<header>
+🎮 Fun Learn
+</header>
+
+<h2>Total XP: <span id="xp">0</span></h2>
+
+<div id="mainSite">
+
+<div class="section">
+
+<h2>📖 Reading Corner</h2>
+
+<div id="page1">
+<p><b>Atomic Habits — Page 1</b></p>
+<p>
+Atomic Habits by James Clear explains that small habits repeated every day can lead to huge success over time. Instead of trying to make big changes all at once, focus on tiny improvements. If you get just 1% better every day, those small improvements grow into big results over time.
+</p>
+<button onclick="nextPage(1)">Next Page</button>
+</div>
+
+<div id="page2" style="display:none">
+<p><b>Atomic Habits — Page 2</b></p>
+<p>
+The book explains that habits follow a simple loop: cue, craving, response, and reward. When something reminds you to act, your brain wants the reward that follows. If you make good habits easy and satisfying, your brain naturally wants to repeat them.
+</p>
+<button onclick="nextPage(2)">Next Page</button>
+</div>
+
+<div id="page3" style="display:none">
+<p><b>Atomic Habits — Page 3</b></p>
+<p>
+One of the most powerful ideas in Atomic Habits is identity. Instead of saying “I want to read more,” say “I am a reader.” When your habits match the type of person you want to become, it becomes easier to stay consistent and build a better lifestyle.
+</p>
+<button onclick="finishReading()">Finish Reading (+20 XP)</button>
+</div>
+
+</div>
+
+<div class="section">
+
+<h2>💪 Exercise Ideas</h2>
+
+<p>Watch this exercise video:</p>
+
+<a href="https://www.youtube.com/watch?v=FB5-7tIiX-I" target="_blank" onclick="exerciseXP()">Open Exercise Video</a>
+
+<p>Bonus Challenge: Do 20 more jumping jacks for extra practice!</p>
+
+</div>
+
+<div class="section">
+
+<h2>❤️ Kindness Mission</h2>
+
+<ul style="list-style:none;padding:0">
+<li>Help someone with homework</li>
+<li>Say thank you to someone today</li>
+<li>Give a genuine compliment</li>
+<li>Help clean something without being asked</li>
+</ul>
+
+<button onclick="kindnessXP()">I Did a Kindness Mission (+10 XP)</button>
+
+</div>
+
+<div class="section">
+
+<h2>🎯 Daily Mission</h2>
+
+<p>Watch this educational video:</p>
+
+<a href="https://www.youtube.com/watch?v=yQNZ0Xv1R-E" target="_blank" onclick="dailyXP()">Open Daily Mission Video</a>
+
+</div>
+
+<div class="section">
+
+<h2>🧠 Fun Kahoot Quiz</h2>
+
+<p>
+Click the link below to get the <b>Game PIN</b>.
+</p>
+
+<p>
+Once you receive the Game PIN, go to Kahoot login and enter the PIN to play the fun quiz.
+</p>
+
+<a href="https://play.kahoot.it/v2/lobby?quizId=d29f81cf-11a6-462d-93ba-37ffc6c91406" target="_blank">
+Open Kahoot Lobby
+</a>
+
+</div>
+
+</div>
+
+<div id="aboutPage">
+
+<h1>About Me</h1>
+
+<p>
+I am a student at an IB school in the United Arab Emirates. I created <b>Fun Learn</b> when I was 11 years old because I wanted to turn boring moments into something fun and meaningful.
+</p>
+
+<p>
+Fun Learn is designed to help kids build better habits while enjoying the process like a game. The website includes reading missions, exercise challenges, kindness activities, daily goals, and fun quizzes that help improve your lifestyle.
+</p>
+
+<p>
+My goal is simple: to make boring time the most fun and productive part of your day. Explore every section of the website, complete the missions, earn XP, and most importantly — have fun while becoming a better version of yourself.
+</p>
+
+<br>
+
+<button onclick="goHome()">Back to Home</button>
+
+</div>
+
+<script>
+
+let xp=0;
+
+let readingDone=false;
+let exerciseDone=false;
+let kindnessDone=false;
+let dailyDone=false;
+
+function addXP(amount){
+xp+=amount;
+document.getElementById("xp").innerText=xp;
+}
+
+function nextPage(page){
+document.getElementById("page"+page).style.display="none";
+document.getElementById("page"+(page+1)).style.display="block";
+}
+
+function finishReading(){
+if(!readingDone){
+addXP(20);
+readingDone=true;
+alert("Great reading! +20 XP");
+}
+}
+
+function exerciseXP(){
+if(!exerciseDone){
+addXP(15);
+exerciseDone=true;
+alert("Exercise started! +15 XP");
+}
+}
+
+function kindnessXP(){
+if(!kindnessDone){
+addXP(10);
+kindnessDone=true;
+alert("Kindness completed! +10 XP");
+}
+}
+
+function dailyXP(){
+if(!dailyDone){
+addXP(15);
+dailyDone=true;
+alert("Daily mission started! +15 XP");
+}
+}
+
+function showAbout(){
+document.getElementById("mainSite").style.display="none";
+document.getElementById("aboutPage").style.display="block";
+}
+
+function goHome(){
+document.getElementById("aboutPage").style.display="none";
+document.getElementById("mainSite").style.display="block";
+}
+
+</script>
+
+</body>
+</html>
